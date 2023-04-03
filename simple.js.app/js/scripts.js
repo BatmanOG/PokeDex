@@ -12,8 +12,8 @@ let pokemonList = [
 // adding for and if statements to print out names on my site
 for (let i=0; i < pokemonList.length; i++){
     if ( pokemonList[i].height >150 ){
-    document.write(pokemonList[i].name + "(Height" + pokemonList[i].height + "cm)-Wow, that's big ");
-}   else {document.write(pokemonList[i].name + "(Height" + pokemonList[i].height + "cm) " );
+    document.write( "<p>" + pokemonList[i].name + " (Height" + pokemonList[i].height + "cm)-Wow, that's big " + "</p>");
+}   else {document.write("<p>" + pokemonList[i].name + " (Height" + pokemonList[i].height + "cm) " + "</p>" );
 }
 }
     
