@@ -1,0 +1,35 @@
+:root {
+    --primary-color: #2ed674;
+    --secondary-color: #e0b354;
+    --dark-grey: #140d0d;
+    --button-bg:rgb(16, 105, 128);
+    --text-color:rgb(167, 104, 21);
+    --link-color: #5c08e4;
+    --visited-link: #765b81;
+    --text-align: center;
+    --project-bg-color: rgb(54, 8, 8);
+    --black:rgba(0,0,0,0.4);
+    --font-weight: 800;
+  
+  }
+  * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .page-header {
+    text-align: var(--text-align);
+    width: 100%;
+    padding: 25px;
+    border-bottom: solid var(--secondary-color);
+  }
+
+body {
+    
+    text-align: var(--text-align);
+    font-family: 'Kanit', sans-serif;
+    font-weight: 1000;
+    font-size: 24px;
+    line-height: 1.6;
+    background-color:var(--primary-color);
+    color: var(--text-color);
+ }
