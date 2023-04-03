@@ -8,4 +8,14 @@ let pokemonList = [
     { name: "Squirtle", height: 50, weight: 9, types:['Water'], eggGroups:['Monster','Water'], catchRate: 0, number: 7 },
     { name: "Wartortle", height: 100, weight: 22.5,types:['Water'], eggGroups:['Monster','Water'], catchRate: 0, number: 8 },
     { name: "Blastoise", height: 160, weight: 85.5, types:['Water'], eggGroups:['Monster','Water'], catchRate: 0, number: 9 }
-]
+];
+// adding for and if statements to print out names on my site
+for (let i=0; i < pokemonList.length; i++){
+    if ( pokemonList[i].height >150 ){
+    document.write(pokemonList[i].name + "(Height" + pokemonList[i].height + "cm)-Wow, that's big ");
+}   else {document.write(pokemonList[i].name + "(Height" + pokemonList[i].height + "cm) " );
+}
+}
+    
+    
+
