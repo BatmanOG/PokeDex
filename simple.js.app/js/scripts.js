@@ -10,12 +10,12 @@ let pokemonList = [
     { name: "Blastoise", height: 160, weight: 85.5, types:['Water'], eggGroups:['Monster','Water'], catchRate: 0, number: 9 }
 ];
 // adding for and if statements to print out names on my site
-for (let i=0; i < pokemonList.length; i++){
-    if ( pokemonList[i].height >150 ){
-    document.write( "<p>" + pokemonList[i].name + " (Height" + pokemonList[i].height + "cm)-Wow, that's big " + "</p>");
-}   else {document.write("<p>" + pokemonList[i].name + " (Height" + pokemonList[i].height + "cm) " + "</p>" );
+pokemonList.forEach(function(user){
+    if ( user.height >150 ){
+    document.write( "<p>" + user.name + " ( Height " + user.height + " cm ) - Wow, that's a big Pokemon " + "</p>");
+}   else {document.write("<p>" + user.name + " ( Height " + user.height + " cm ) " + "</p>" );
 }
-}
+});
     
     
 
