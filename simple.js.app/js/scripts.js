@@ -76,17 +76,28 @@ let pokemonList = [
 
     function add(pokemon){
         pokemonList.push(pokemon);
+    }    
+    
+    //adding a function to log the name in the console
+    function showDetails(pokemon){
+       console.log(pokemon.name);
     }
 
+//adding funtion to list pokemon
     function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
         let listpokemon = document.createElement('li');
         let button =document.createElement('button');
+        //adding an event listener
+        button.addEventListener('click', function(event){
+            showDetails(pokemon)
+        });
         button.innerText = pokemon.name;
         button.classList.add("button-class");
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
     }
+
 
     function getAll() {
         return pokemonList
