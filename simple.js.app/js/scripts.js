@@ -1,87 +1,15 @@
 let pokemonRepository = (function() {
-let pokemonList = [
-    { name: "Bulbasaur",
-        height: 70,
-        weight: 6.9,
-        types:['Grass','Poison'],
-        eggGroups:['Monster', 'Grass'],
-        catchRate: 0,
-        number: 1 
-        },
+let pokemonList = [];
+let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-    { name: "Ivysaur",
-        height: 100,
-        weight: 13,
-        types:['Grass','Poison'],
-        eggGroups:['Monster', 'Grass'],
-        catchRate: 0 , 
-        number: 2
-         },
-    { name: "Venusaur",
-        height: 200,
-        weight: 100,
-        types:['Grass','Poison'],
-        eggGroups:['Monster', 'Grass'],
-        catchRate: 0,
-        number: 3 
-        },
-    { name: "Charmander",
-        height: 60,
-        weight: 8.5,
-        types:['Fire'],
-        eggGroups:['Monster','Dragon'],
-        catchRate: 0, 
-        number: 4 
-        },
-    { name: "Charmeleon",  
-        height: 110, 
-        weight: 19, 
-        types:['Fire'], 
-        eggGroups:['Monster','Dragon'], 
-        catchRate: 0, 
-        number: 5 
-        },
-    { name: "Charzard", 
-        height: 170, 
-        weight: 90.5, 
-        types:['Fire','Flying'], 
-        eggGroups:['Monster','Dragon'], 
-        catchRate: 0, 
-        number:6 
-        },
-    { name: "Squirtle", 
-        height: 50, 
-        weight: 9, 
-        types:['Water'], 
-        eggGroups:['Monster','Water'], 
-        catchRate: 0, 
-        number: 7 
-        },
-    { name: "Wartortle", 
-        height: 100, 
-        weight: 22.5,
-        types:['Water'], 
-        eggGroups:['Monster','Water'], 
-        catchRate: 0, 
-        number: 8 
-        },
-    { name: "Blastoise", 
-        height: 160, 
-        weight: 85.5, 
-        types:['Water'], 
-        eggGroups:['Monster','Water'], 
-        catchRate: 0, 
-        number: 9 
-        }]
+    
 
     function add(pokemon){
         pokemonList.push(pokemon);
     }    
     
     //adding a function to log the name in the console
-    function showDetails(pokemon){
-       console.log(pokemon.name);
-    }
+    
 
 //adding funtion to list pokemon
     function addListItem(pokemon) {
@@ -97,7 +25,43 @@ let pokemonList = [
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
     }
-
+    //load list function
+    function loadList() {
+        return fetch(apiUrl).then(function(response){
+            return response.json();
+        }).then(function (json){
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function(e) {
+            console.error(e);
+        })
+    }
+    //load details function
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+          return response.json();
+        }).then(function (details) {
+          item.imageUrl = details.sprites.front_default;
+          item.height = details.height;
+          item.types = details.types;
+          item.weight = details.weight;
+          item.abilities = details.abilities;
+        }).catch(function (e) {
+          console.error(e);
+        });
+      }
+      //show details function
+    function showDetails(item){
+            pokemonRepository.loadDetails(item).then(function() {
+        console.log(item);
+        });
+    }
 
     function getAll() {
         return pokemonList
@@ -107,14 +71,19 @@ let pokemonList = [
         add: add,
         getAll: getAll,
         addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails
     };
 })();
+
+pokemonRepository.loadList().then(function() {
 
 // adding for and if statements to print out names on my si
 pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
 
 });
-    
+    });
     
 
