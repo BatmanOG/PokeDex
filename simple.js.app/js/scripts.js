@@ -8,8 +8,6 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
         pokemonList.push(pokemon);
     }    
     
-    //adding a function to log the name in the console
-    
 
 //adding funtion to list pokemon
     function addListItem(pokemon) {
@@ -18,13 +16,16 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
         let button =document.createElement('button');
         //adding an event listener
         button.addEventListener('click', function(event){
-            showDetails(pokemon)
+            showDetails(pokemon);
+            showModal(pokemon);
         });
         button.innerText = pokemon.name;
         button.classList.add("button-class");
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
     }
+
+
     //load list function
     function loadList() {
         return fetch(apiUrl).then(function(response){
@@ -59,31 +60,86 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
       //show details function
     function showDetails(item){
             pokemonRepository.loadDetails(item).then(function() {
-        console.log(item);
+                showModal(item);
+                console.log(item);
         });
     }
 
     function getAll() {
-        return pokemonList
+        return pokemonList;
     }
+    //adding interactive modal 
+    function showModal(item) {
+        let modalContainer = document.querySelector('#modal-container');
+         modalContainer.innerHTML = '';
+       
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+    
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+    
+        let titleElement = document.createElement('h1');
+        titleElement.innerText =(item.name) ;
+    
+        let contentElement = document.createElement('p');
+        contentElement.innerText = 'Height: ' + (item.height) +'\n'  + ' Weight: ' + (item.weight) + '\n' + ' Type: ' + (item.types) +'\n' + ' Abilities: ' + (item.abilities);
+        
+        let imagePokemon = document.createElement('img');
+        imagePokemon.setAttribute('src', item.imageUrl);
+        imagePokemon.setAttribute('height', '200');
+        imagePokemon.setAttribute('width', '270');
+        imagePokemon.setAttribute('alt', "Pokemon Image");
 
+
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modal.appendChild(imagePokemon);
+        modalContainer.appendChild(modal);
+        
+        modalContainer.classList.add('is-visible');
+        
+        
+    
+    
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal();  
+        }
+        });
+    
+        modalContainer.addEventListener('click', (e) => {
+            let target = e.target;
+            if (target === modalContainer) {
+                hideModal();
+        }
+        });
+        function hideModal() {
+            
+            modalContainer.classList.remove('is-visible');
+        }
+    }
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails,
-        showDetails: showDetails
+        showDetails: showDetails,
+        showModal: showModal
+    
     };
 })();
 
+
 pokemonRepository.loadList().then(function() {
 
-// adding for and if statements to print out names on my si
+// adding for and if statements to print out names on my site
 pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
 
 });
-    });
-    
-
+    })
