@@ -19,7 +19,7 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
             showDetails(pokemon);
             showModal(pokemon);
         });
-        button.innerText = pokemon.name;
+        button.innerText = pokemon.name.toUpperCase();
         button.classList.add("button-class");
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
@@ -45,6 +45,9 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
     //load details function
     function loadDetails(item) {
         let url = item.detailsUrl;
+        let name = item.name;
+        let capitalLetter = name.charAt(0).toUpperCase();
+        capitalName  = capitalLetter + name.slice(1);
         return fetch(url).then(function (response) {
           return response.json();
         }).then(function (details) {
@@ -82,10 +85,10 @@ let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
         closeButtonElement.addEventListener('click', hideModal);
     
         let titleElement = document.createElement('h1');
-        titleElement.innerText =(item.name) ;
-    
+        titleElement.innerText =(capitalName) ;
+        
         let contentElement = document.createElement('p');
-        contentElement.innerText = 'Height: ' + (item.height) +'\n'  + ' Weight: ' + (item.weight) + '\n' + ' Type: ' + (item.types) +'\n' + ' Abilities: ' + (item.abilities);
+        contentElement.innerText = 'Height: ' + (item.height) +'\n'  + ' Weight: ' + (item.weight) ;
         
         let imagePokemon = document.createElement('img');
         imagePokemon.setAttribute('src', item.imageUrl);
