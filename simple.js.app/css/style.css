@@ -1,0 +1,26 @@
+body, 
+
+.list-group-item{
+    background-color: #ca6dc6;
+}
+.modal-content{
+    text-align: center;
+}
+.modal-title{
+    text-align: match-parent;
+    font-size: 42px;
+    color: fuchsia;
+}
+.modal-content{
+    background-color: aquamarine;
+    font-size: 32px;
+}
+.button{ 
+    grid-template-columns: repeat(4 , 1pr);
+}
+h1{
+    color: black;
+    font-size:42px;
+    font-weight: 900;
+    font-style: oblique;
+}
