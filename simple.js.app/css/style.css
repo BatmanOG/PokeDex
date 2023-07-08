@@ -3,24 +3,41 @@ body,
 .list-group-item{
     background-color: #ca6dc6;
 }
+
+@media (min-width: 576px) {
+    .container{
+        columns: 3;
+    }
+    
+}
 .modal-content{
     text-align: center;
 }
 .modal-title{
+    font-weight: 800;
     text-align: match-parent;
     font-size: 42px;
-    color: fuchsia;
+    color: rgb(14, 13, 14);
 }
 .modal-content{
+    font-weight: 600;
     background-color: aquamarine;
     font-size: 32px;
 }
-.button{ 
-    grid-template-columns: repeat(4 , 1pr);
-}
+
+  .btn-success{
+    color: rgb(39, 2, 31);
+    font-weight: 600;
+    width: 170px;
+    border-radius: 2px;
+  }
 h1{
     color: black;
     font-size:42px;
     font-weight: 900;
     font-style: oblique;
+    text-align: center;
+}
+h5{
+    text-align: center;
 }
