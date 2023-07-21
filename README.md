@@ -36,6 +36,7 @@ larger screens
  
 
 
+![pokemon ap 1](https://github.com/BatmanOG/PokeDex/assets/122240285/0362f5ab-cb3d-4bdf-9d69-95512887c7e8)
 
 
 
@@ -44,3 +45,4 @@ larger screens
 smaller screens
  
 
+![pokemon app2](https://github.com/BatmanOG/PokeDex/assets/122240285/5ad63ab8-8d0d-4acf-a0a5-1ffbee9e76ba)
