@@ -21,7 +21,7 @@ let pokemonRepository = (function() {
 
             button.setAttribute('data-toggle', 'modal');
             button.setAttribute('data-target' , '#exampleModal');
-            button.classList.add('btn-success' , 'mt-4' ,'p-3' , 'border-2' , 'fs-6');
+            button.classList.add('btn-success' , 'mt-2' ,'p-1' , 'border-2');
 
             //adding an event listener
             button.addEventListener('click', function() {
