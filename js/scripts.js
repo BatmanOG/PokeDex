@@ -11,7 +11,7 @@ let pokemonRepository = (function() {
         }    
         
     
-    //adding funtion to list pokemon
+    
         function addListItem(pokemon) {
             let pokemonList = document.querySelector('.list-group');
             let listpokemon = document.createElement('li');
@@ -23,7 +23,7 @@ let pokemonRepository = (function() {
             button.setAttribute('data-target' , '#exampleModal');
             button.classList.add('btn-success' , 'mt-2' ,'p-1' , 'border-2');
 
-            //adding an event listener
+            
             button.addEventListener('click', function() {
                 showDetails(pokemon);
             });
@@ -34,7 +34,7 @@ let pokemonRepository = (function() {
         }
     
     
-        //load list function
+        
         function loadList() {
             return fetch(apiUrl).then(function(response){
                 return response.json();
@@ -53,7 +53,7 @@ let pokemonRepository = (function() {
             })
         }
 
-        //load details function
+        
         function loadDetails(pokemon) {
             let url = pokemon.detailsUrl;
             return fetch(url).then(function (response) {
@@ -66,7 +66,7 @@ let pokemonRepository = (function() {
               console.error(e);
             });
           }
-          //show details function
+          
         function showDetails(pokemon){
                 pokemonRepository.loadDetails(pokemon).then(function() {
                     showModal(pokemon);
@@ -80,7 +80,7 @@ let pokemonRepository = (function() {
             
 
 
-        //adding interactive modal 
+        
         function showModal(pokemon) {
             
             
