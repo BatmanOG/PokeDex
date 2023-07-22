@@ -94,7 +94,7 @@ let pokemonRepository = (function() {
             weight.innerText = `Weight: ${pokemon.weight.toFixed(2)} Kg`;
             height.innerText = `Height: ${pokemon.height.toFixed(2)} M`;
             imgDetails.src = pokemon.imageUrl;
-    }
+    
         
         
             window.addEventListener('keydown', (e) => {
@@ -109,7 +109,8 @@ let pokemonRepository = (function() {
                 if (target === modalContainer) {
                     hideModal();
             }
-            });
+            });}
+            
             function hideModal() {
                 let modalContainer = document.querySelector('#exampleModal');
                 modalContainer.classList.remove('is-visible');
@@ -123,7 +124,7 @@ let pokemonRepository = (function() {
             loadDetails: loadDetails,
             showDetails: showDetails,
             showModal: showModal,
-            hideModal: hideModal,
+            hideModal: hideModal
         
         };
     })();
