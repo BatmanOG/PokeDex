@@ -130,8 +130,6 @@ let pokemonRepository = (function() {
     
     
     pokemonRepository.loadList().then(function() {
-    
-    // adding for and if statements to print out names on my site
     pokemonRepository.getAll().forEach(function(pokemon){
         pokemonRepository.addListItem(pokemon);
     
